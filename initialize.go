@@ -23,10 +23,24 @@ package gokl
 
 import "fmt"
 
+var (
+	// TODO: do we want it to be a singleton?
+	// TODO: would it be more flexible to have multiple RMs potentially active?
+	// TODO: Vulkan pushed the RM function to the application to simplify the driver
+	rm_singleton *ResourceManager
+)
+
 func Initialize() (rm *ResourceManager) {
 	rm = &ResourceManager{}
 	rm.Initialize("Default RM")
+	rm_singleton = rm
 	return
+}
+
+func Shutdown() () {
+	rm := rm_singleton
+	rm.Release()
+	rm_singleton = nil
 }
 
 func PrettyPrint(mat [][]float32) string {

@@ -45,7 +45,8 @@ const (
 	KL_NAN BitStrucureIdentifier = iota
 	KL_STRING
 	KL_INTEGER
-	KL_FLOAT
+	KL_FLOAT32
+	KL_FLOAT64
 	KL_UNUM
 	KL_POSIT
 )
